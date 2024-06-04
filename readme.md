@@ -1,29 +1,36 @@
-## GoIT Node.js Course Template Homework
+# GoIT Node.js Homework 2 ÷ 6
 
-Realizează un fork al acestui repozitoriu pentru a îndeplini temele de acasă (2-6). Fork-ul va crea un repozitoriu pe contul tău de pe http://github.com
+## Description:
+Application allows to: GET / ADD / FIND BY ID / UPDATE / DELETE contact/s. The contacts list located in contacts.json file, on server. Adding, updating or deleting contact also modifies contacts.json file. Used HTTP methods: GET, PUT, POST, DELETE. Application tested on Insomnia/Postman/Browser.
+In homework 3: 
+Saved contacts list on MongoDB database. 
+Used Mongoose library to work on MongoDB. 
 
-Adaugă mentorul la colaborare.
+## INSTRUCTIONS to hw 2 ÷ 6 in polish:
+Wykonaj forka tego repozytorium, aby wykonywać zadania domowe (2-6). Fork utworzy repozytorium na Twoim koncie na http://github.com
 
-Pentru fiecare temă, creează un branch separat.
+Dodaj mentora jako collaboratora.
 
-- hw02
-- hw03
+Dla każdego zadania domowego utwórz nową gałąź (branch).
+
+- hw02 - on branch hw02-express
+- hw03 - on branch hw03-mongodb
 - hw04
 - hw05
 - hw06
 
-Fiecare branch nou pentru fiecare temă trebuie să fie derivat din branch-ul principal (master).
+Każda nowa gałąź dla zadania powinna być tworzona z gałęzi master.
 
-După ce ai terminat lucrul la tema de acasă în branch-ul tău, trebuie să creezi un pull request (PR). Apoi, adaugă mentorul pentru revizuirea codului. Abia după ce mentorul aprobă PR-ul, poți face "merge" a branch-ului cu tema de acasă în branch-ul master.
+Po zakończeniu wykonania zadania domowego na swojej gałęzi, należy zrobić pull request (PR). Następnie dodaj mentora do przeglądu kodu. Dopiero po zatwierdzeniu PR przez mentora możesz scalić gałąź z zadaniem domowym do gałęzi master.
 
-Citește cu atenție comentariile mentorului. Corectează observațiile și fă un "commit" în branch-ul cu tema de acasă. Modificările se vor reflecta automat în PR după ce trimiți "commit"-ul cu corecțiile pe GitHub. După corectare, adaugă din nou mentorul pentru revizuirea codului.
+Uważnie czytaj komentarze mentora. Popraw uwagi i zrób commit na gałęzi z zadaniem domowym. Zmiany automatycznie pojawią się w PR po wysłaniu commitu z poprawkami na GitHub. Po poprawkach ponownie dodaj mentora do przeglądu kodu.
 
-- La predarea temei de acasă, este furnizat un link către PR.
-- Codul JavaScript este curat și ușor de înțeles, iar pentru formatare se folosește Prettier.
+- Podczas oddawania zadania domowego podaj link do PR.
+- Kod JS jest czytelny i zrozumiały, do formatowania używany jest Prettier.
 
-### Comenzi:
+### Komendy:
 
-- `npm start` &mdash; pornește serverul în modul production.
-- `npm run start:dev` &mdash; pornește serverul în modul dezvoltare (development).
-- `npm run lint` &mdash; rulează verificarea codului cu ESLint, este necesar să se ruleze înaintea fiecărui PR și să se corecteze toate erorile linterului.
-- `npm lint:fix` &mdash; aceeași verificare a linterului, dar cu corecții automate pentru erorile simple.
+- `npm start` &mdash;  uruchamia serwer w trybie produkcyjnym
+- `npm run start:dev` &mdash; uruchamia serwer w trybie deweloperskim (development)
+- `npm run lint` &mdash; uruchamia sprawdzanie kodu z ESLint, należy wykonać przed każdym PR i poprawić wszystkie błędy lintera
+- `npm lint:fix` &mdash; to samo co powyższe, ale również automatycznie poprawia proste błędy.
