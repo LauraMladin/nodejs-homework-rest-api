@@ -4,8 +4,8 @@ import {
   createContactInDB,
   updateCurrentUserContactInDB,
   removeCurrentUserContactFromDB,
-} from '../service/contacts.service.js';
-import Joi from 'joi';
+} from "../service/contacts.service.js";
+import Joi from "joi";
 
 const contactReqBodySchema = Joi.object({
   name: Joi.string().min(3).max(30).required(),
@@ -24,20 +24,25 @@ const getUserContactsList = async (req, res, next) => {
     const limit = req.query.limit || 20;
     const favorite = req.query.favorite;
 
-    const data = await getCurrentUserFilteredContactsFromDB({ favorite, owner, page, limit });
+    const data = await getCurrentUserFilteredContactsFromDB({
+      favorite,
+      owner,
+      page,
+      limit,
+    });
     if (!data) {
       return res.status(404).json({
-        status: 'error',
+        status: "error",
         code: 404,
         message: `This page of contacts were not found`,
-        data: 'Not Found',
+        data: "Not Found",
       });
     }
     const contacts = data.contacts;
     const pagination = data.pagination;
 
-    return res.header('pagination', JSON.stringify(pagination)).json({
-      status: 'success',
+    return res.header("pagination", JSON.stringify(pagination)).json({
+      status: "success",
       code: 200,
       pagination,
       data: {
@@ -57,16 +62,16 @@ const getContactById = async (req, res, next) => {
     const contact = await getCurrentUserContactByIdFromDB({ owner, id });
     if (contact) {
       res.json({
-        status: 'success',
+        status: "success",
         code: 200,
         data: { contact },
       });
     } else {
       res.status(404).json({
-        status: 'error',
+        status: "error",
         code: 404,
         message: `Not found contact id: ${id}`,
-        data: 'Not Found',
+        data: "Not Found",
       });
     }
   } catch (err) {
@@ -81,15 +86,14 @@ const createContact = async (req, res, next) => {
   const owner = req.user.id;
 
   if (error) {
-    res.status(400).json({ message: error.message });
-    return;
+    return res.status(400).json({ message: error.message });
   }
 
   try {
     const contact = await createContactInDB({ name, email, phone, owner });
 
     res.status(201).json({
-      status: 'success',
+      status: "success",
       code: 201,
       data: { createdContact: contact },
     });
@@ -106,24 +110,29 @@ const updateContact = async (req, res, next) => {
   const owner = req.user.id;
 
   if (error) {
-    res.status(400).json({ message: error.message });
-    return;
+    return res.status(400).json({ message: error.message });
   }
 
   try {
-    const contact = await updateCurrentUserContactInDB({ id, name, email, phone, owner });
+    const contact = await updateCurrentUserContactInDB({
+      id,
+      name,
+      email,
+      phone,
+      owner,
+    });
     if (contact) {
       res.json({
-        status: 'success',
+        status: "success",
         code: 200,
         data: { updatedContact: contact },
       });
     } else {
       res.status(404).json({
-        status: 'error',
+        status: "error",
         code: 404,
         message: `Not found contact id: ${id}`,
-        data: 'Not Found',
+        data: "Not Found",
       });
     }
   } catch (err) {
@@ -139,24 +148,23 @@ const updateStatusContact = async (req, res, next) => {
   const owner = req.user.id;
 
   if (error) {
-    res.status(400).json({ message: 'missing field favorite' });
-    return;
+    return res.status(400).json({ message: "missing field favorite" });
   }
 
   try {
     const result = await updateCurrentUserContactInDB({ id, owner, favorite });
     if (result) {
       res.json({
-        status: 'Success',
+        status: "Success",
         code: 200,
         data: { updatedContact: result },
       });
     } else {
       res.status(404).json({
-        status: 'error',
+        status: "error",
         code: 404,
         message: `Not found contact id: ${id}`,
-        data: 'Not Found',
+        data: "Not Found",
       });
     }
   } catch (err) {
@@ -173,16 +181,16 @@ const removeContact = async (req, res, next) => {
     const result = await removeCurrentUserContactFromDB({ id, owner });
     if (result) {
       res.json({
-        status: 'success',
+        status: "success",
         code: 200,
         data: { deletedContact: result },
       });
     } else {
       res.status(404).json({
-        status: 'error',
+        status: "error",
         code: 404,
         message: `Not found contact id: ${id}`,
-        data: 'Not Found',
+        data: "Not Found",
       });
     }
   } catch (err) {
